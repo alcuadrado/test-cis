@@ -5,6 +5,7 @@ console.log(`
 ci-info.isCi: ${ci.isCI}
 isGithubActions: ${process.env.GITHUB_ACTIONS !== undefined}
 isLinuxWithoutDisplayServer: ${isLinuxWithoutDisplayServer()}
+isNow: ${isNow()}
 `);
 
 function isLinuxWithoutDisplayServer() {
@@ -21,4 +22,10 @@ function isLinuxWithoutDisplayServer() {
   }
 
   return true;
+}
+
+function isNow() {
+  return (
+    process.env.NOW !== undefined || process.env.DEPLOYMENT_ID !== undefined
+  );
 }
